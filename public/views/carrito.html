@@ -1,0 +1,79 @@
+
+<body>
+    <header id="main-cabezera">
+        <ul class="encabezado">
+            <img class="ImgHeader" src="img/logo.png">
+        </ul>
+    </header>
+    <section id="seccion2">
+        <p>{{empty}}</p>
+        <!-- CONTEDOR DEL PRODUCTO -->
+        <div ng-cloak="" class="carddemoBasicUsage">
+                    
+            <md-content class="md-padding" layout-xs="column" layout="row">
+                <div flex-xs="" flex-gt-xs="80" layout="column">
+                    <md-card-actions layout="row" layout-align="end center">
+                        <p ng-show="Visibility"> SUBTOTAL({{contador}}items) : {{acumulador | currency}}</p>
+                        <md-button ng-show="Visibility" ng-click="comprarall()">COMPRAR</md-button>
+                    </md-card-actions>
+
+                    <md-card ng-repeat="producto in newproducts">
+                        <md-card-title>
+                            <md-card-title-text>
+                                <span class="md-headline">Nombre: {{ producto.Nombre }}</span>
+                                <span class="md-subhead">Precio: {{ producto.Precio | currency}}</span>
+                                <span class="md-subhead">Cantidad disponible: {{ producto.Cantidad}} </span>
+                            </md-card-title-text>
+                        </md-card-title>
+                        <md-card-content layout="row" layout-align="space-between">
+                            <div class="md-media-xl card-media">
+                                <img flex-gt-xs="80" ng-src="{{producto.Imagen}}" class="md-card-image" alt="Washed Out">
+                            </div>
+                            <md-card-title-text layout="column">
+                                <p>Cantidad:
+                                    <input type="number" class="button" value="1" ng-model="date.nuevaCantidad" min="0" max="200">
+                                </p>
+                                <md-card-actions layout="row" layout-align="space-between">
+                                    <md-button class="md-icon-button" flex-gt-xs="80" ng-click="cantidad(date,producto)" aria-label="Favorite">
+                                        Agregar
+                                    </md-button>
+                                </md-card-actions>
+                            </md-card-title-text>
+                            <md-card-title-text layout="column">
+                                <p>{{date.err}}</p>
+                                <p>{{date.msj}}</p>
+                                <p>{{date.confirm }}{{date.total | currency }}</p>
+                            </md-card-title-text>
+                        </md-card-content>
+                        <md-card-actions layout="row" flex-gt-xs="80">
+                            <md-button class="md-icon-button" flex-gt-xs="60" ng-click="borrar(producto,date)" aria-label="Favorite">
+                                BORRAR
+                            </md-button>
+                            <md-button class="md-icon-button" flex-gt-xs="50" aria-label="Settings" ng-show="Confirm" ng-click="confirmar(producto,date)">
+                                CONFIRMAR
+                            </md-button>
+                        </md-card-actions>
+
+                    </md-card>
+                    <md-card-actions layout="row" layout-align="end center">
+                        <p ng-show="Visibility"> SUBTOTAL({{contador}}items) : {{acumulador | currency}}</p>
+                        <md-button ng-show="Visibility" ng-click="comprarall()">COMPRAR</md-button>
+                    </md-card-actions>
+                </div>
+    </section>
+    <!-- PIE DE PAGINA -->
+    <footer id="pie">
+        <p>Institucion Universitaria De Envigado</p>
+        <p> &copy; Derechos reservados por :
+            <BR> SEBASTIAN LONDOÑO CALLE
+            <br>SANTIAGO LONDOÑO
+            <BR>ANGELICA CASTRO</p>
+    </footer>
+    </header>
+    <script src="/angular/angular.min.js"></script>
+    <script src="../angular-route/angular-route.js"></script>
+    <script src="https://code.angularjs.org/1.5.5/angular-route.min.js"></script>
+    <script src="/angular/app.js"></script>
+    <script src="/angular/controller.js"></script>
+    <script src="/angular/services.js"></script>
+</body>

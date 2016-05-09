@@ -1,0 +1,126 @@
+    <header id="main-cabezera">
+    <ul class="encabezado">
+        <img class="ImgHeader" src="img/logo.png">
+    </ul>
+    <!-- Menuu -->
+    <nav>
+        <ul class="barraNavegacion">
+            <li>
+                <a ng-href="#/"> <i class="fa fa-home fa-2x"></i>Home</a>
+            </li>
+            <li>
+                <a ng-href="#/productos">
+                    <i class="fa fa-shopping-bag fa-2x" aria-hidden="true"></i>Productos</a>
+            </li>
+            <li><a ng-href="#/registro"><i class="fa fa-file fa-2x" aria-hidden="true"></i>Registro</a>
+            </li>
+            <li><a ng-href="#/carrito"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i>Carrito {{cantProductosCarrito}}</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<!-- slider -->
+<div class="container">
+    <div id="slides">
+        <img width="200px" height="300px" src="img/slider2.jpg">
+        <img width="200px" height="300px" src="img/slider3.png">
+        <img width="200px" height="300px" src="img/slider4.png">
+        <img width="200px" height="300px" src="img/slider6.png">
+        <img width="200px" height="300px" src="img/slider7.png">
+    </div>
+</div>
+<!-- CATEGORIA -->
+<aside id="columna">
+    <h2>CATEGORIAS</h2>
+    <nav class="tab">
+        <ul class="categorias">
+            <li>
+                <a href ng-click="filtrarPor('')">TODOS</a>
+                <li>
+                    <a href ng-click="filtrarPor('Tenis')">TENNIS</a>
+                </li>
+                <li>
+
+                    <a href ng-click="filtrarPor('Camiseta')">CAMISAS</a>
+                </li>
+                <li>
+                    <a href ng-click=>BUSOS</a>
+                </li>
+        </ul>
+    </nav>
+</aside>
+
+
+<section id="seccion">
+    <article id="article1">
+        <!-- BUSCAR -->
+        <a>
+            <label class id="filtro">
+                <input type="text" class="button" placeholder="Buscar ..." ng-model="buscar">
+            </label>
+        </a>
+        <!-- FILTROS -->  
+        <table id="contenedorfiltros">
+            <tr>
+                <td width="100px" text-align="center">
+                    <p>OrdenarPor:</p>
+                </td>
+                <td width="80px" text-align="center"><a href="" ng-click="ordenarMayormenor('Nombre')" margin-left="20px">Nombre</a>
+                </td>
+                <td width="80px" text-align="center"><a href="" ng-click="ordenarMayormenor('Precio')" margin-left="20px">Precio</a>
+                </td>
+                <td width="80px" text-align="center"><a href="" ng-click="ordenarMayormenor('-Like')" margin-left="20px">Mas popular</a>
+                </td>
+                <td width="80px" text-align="center"><a href="" ng-click="ordenarMayormenor('-Dislike')" margin-left="20px">Menos popular</a>
+                </td>
+            </tr>
+        </table>
+    </article>
+    <!-- CONTEDOR DEL PRODUCTO -->
+    <div ng-cloak="" class="carddemoBasicUsage">
+        <md-content class="md-padding" layout-xs="column" layout="row">
+            <div flex-xs="" flex-gt-xs="60" layout="column">
+                <md-card ng-repeat="producto in productos | filter:buscar | filter:filtroSeleccionado | orderBy:ordenMayor">
+                    <img flex-gt-xs="90" ng-src="{{producto.Imagen}}" class="md-card-image" alt="Washed Out">
+                    <md-card-actions layout-align="end center">
+                        <md-button class="md-icon-button" flex-gt-xs="9" aria-label="Favorite">
+                            <i class="fa fa-thumbs-o-up fa-2x" aria-hidden="true"></i>
+                            <input type="radio" name="x" ng-click="Likes(producto)">
+                        </md-button>{{producto.Like}}
+                        <md-button class="md-icon-button" flex-gt-xs="9" aria-label="Settings">
+                            <i class="fa fa-thumbs-o-down fa-2x" aria-hidden="true"></i>
+                            <input type="radio" name="x" ng-click="Dislikes(producto)">
+                        </md-button>{{producto.Dislike}}
+                    </md-card-actions>
+                    <md-card-title flex="grow">
+                        <md-card-title-text>
+                            <span class="md-headline">{{producto.Nombre}}</span>
+                        </md-card-title-text>
+                    </md-card-title>
+                    <md-card-content flex="grow">
+                        <p> Precio {{ producto.Precio | currency}}</p>
+                    </md-card-content>
+                    <md-card-actions layout="row" layout-align="end center">
+                        <md-button ng-click="add(producto)" class="fa fa-shopping-cart fa-2x" aria-label="Share">
+                            AGREGAR
+                        </md-button>
+                    </md-card-actions>
+                </md-card>
+</section>
+<!-- PIE DE PAGINA -->
+<footer id="pie">
+    <p>Institucion Universitaria De Envigado</p>
+    <p> &copy; Derechos reservados por :
+        <BR> SEBASTIAN LONDOÑO CALLE
+        <br>SANTIAGO LONDOÑO
+        <BR>ANGELICA CASTRO</p>
+</footer>
+<script src="/angular/angular.min.js"></script>
+<script src="../angular-route/angular-route.js"></script>
+<script src="https://code.angularjs.org/1.5.5/angular-route.min.js"></script>
+<script src="/angular/app.js"></script>
+<script src="/angular/controller.js"></script>
+<script src="/angular/services.js"></script>
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="js/jquery.slides.min.js"></script>
+<script src="js/slides.js"></script>
